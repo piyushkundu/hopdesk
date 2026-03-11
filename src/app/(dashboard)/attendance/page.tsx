@@ -11,7 +11,7 @@ export default function AttendancePage() {
     const [selectedDate] = useState(new Date().toISOString().split("T")[0]);
     const [attendance, setAttendance] = useState<Record<string, AttendanceStatus>>(() => {
         const init: Record<string, AttendanceStatus> = {};
-        demoAttendance.forEach((a) => { init[a.studentId] = a.status; });
+        demoAttendance.forEach((a) => { init[a.studentId] = a.status as AttendanceStatus; });
         return init;
     });
 

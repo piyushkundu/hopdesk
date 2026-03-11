@@ -121,7 +121,7 @@ export default function FeesPage() {
                                     </div>
                                 </td>
                                 <td><span className="badge badge-primary">{fee.className}</span></td>
-                                <td>{fee.month} {fee.year}</td>
+                                <td>{(fee as any).month} {(fee as any).year}</td>
                                 <td style={{ fontWeight: 600 }}>₹{fee.amount.toLocaleString()}</td>
                                 <td><span className={`badge ${fee.status === "paid" ? "badge-success" : fee.status === "unpaid" ? "badge-danger" : "badge-warning"}`}>{fee.status}</span></td>
                                 <td>{fee.paymentDate || "—"}</td>

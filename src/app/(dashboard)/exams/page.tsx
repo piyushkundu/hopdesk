@@ -58,7 +58,7 @@ export default function ExamsPage() {
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                             <div>
                                 <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text-primary)", marginBottom: 4 }}>{exam.name}</h3>
-                                <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Class {exam.className}{exam.section ? `-${exam.section}` : ""}</p>
+                                <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Class {exam.className}{(exam as any).section ? `-${(exam as any).section}` : ""}</p>
                             </div>
                             <span className={`badge ${exam.status === "upcoming" ? "badge-warning" : exam.status === "completed" ? "badge-success" : "badge-primary"}`}>
                                 {exam.status}
@@ -72,14 +72,14 @@ export default function ExamsPage() {
                             </div>
                             <div style={{ padding: 10, background: "rgba(6, 182, 212, 0.06)", borderRadius: "var(--radius-sm)" }}>
                                 <p style={{ fontSize: 11, color: "var(--text-muted)" }}>Total Marks</p>
-                                <p style={{ fontSize: 13, fontWeight: 500 }}>{exam.totalMarks}</p>
+                                <p style={{ fontSize: 13, fontWeight: 500 }}>{(exam as any).totalMarks}</p>
                             </div>
                         </div>
 
                         <div style={{ marginBottom: 16 }}>
                             <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 8 }}>Subjects</p>
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                                {exam.subjects.map((subj) => (
+                                {((exam as any).subjects || []).map((subj: string) => (
                                     <span key={subj} className="badge badge-info" style={{ fontSize: 11 }}>{subj}</span>
                                 ))}
                             </div>
