@@ -18,6 +18,10 @@ let auth: Auth;
 let db: Firestore;
 let storage: FirebaseStorage;
 
+if (!firebaseConfig.apiKey) {
+    console.warn("⚠️ FIREBASE CONFIG MISSING! Check your Vercel Environment Variables. The app needs NEXT_PUBLIC_FIREBASE_API_KEY.");
+}
+
 try {
     app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
     auth = getAuth(app);
@@ -25,6 +29,7 @@ try {
     storage = getStorage(app);
 } catch (error) {
     console.error("Firebase initialization failed:", error);
+    // Let it throw an error so it's visible if something is extremely wrong
 }
 
 export { auth, db, storage };
